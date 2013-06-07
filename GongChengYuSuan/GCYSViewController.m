@@ -17,7 +17,8 @@
 #pragma mark -生命周期
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    //测试git
+    [super viewDidLoad]; 
     self.calculator = [[GCYSCalculator alloc] init];
     [self.calculator initialize];
     [self fillArrayOfSections];
