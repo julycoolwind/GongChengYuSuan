@@ -82,6 +82,7 @@
 }
 
 - (float)doCalculator {
+    //这个注释用于测试git
     //UITableViewCell *ownerCell = (UITableViewCell *)paramSender.superview;
     //TODO:遍历section2中的cell根据switch的状态计算结果。
     NSInteger counter = 0;
