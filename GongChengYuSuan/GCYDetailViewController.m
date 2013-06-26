@@ -13,6 +13,7 @@
     int CELL_HIGHT;
     int CELL_WIDTH;
     int LEFT_HEAD_WIDTH;
+    CGPoint TOP_LEFT_POINT;
 }
 @property NSArray *resultArrray;
 @end
@@ -25,6 +26,7 @@
         CELL_HIGHT = 60;
         CELL_WIDTH = 100;
         LEFT_HEAD_WIDTH = 120;
+        TOP_LEFT_POINT = CGPointMake(0, 0);
         [self.navigationItem setHidesBackButton:YES];
         self.resultArrray = resultArray;
         self.title = @"详细结果表";
@@ -185,54 +187,54 @@
     if(tableView == self.leftTable){
         if (indexPath.row == 0){
             
-            [self addLabelToView:cell withText:@"投资估算编制或审核" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"投资估算编制或审核" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
         }
         else if (indexPath.row == 1){
-            [self addLabelToView:cell withText:@"设计概算编制或审核" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"设计概算编制或审核" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
            
         }else if (indexPath.row == 2){
-            [self addLabelToView:cell withText:@"工程预算编制或审核" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"工程预算编制或审核" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
             
         }else if (indexPath.row == 3){
-            [self addLabelToView:cell withText:@"招标工程量清单编制或审核" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"招标工程量清单编制或审核" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
             
         }else if (indexPath.row == 4){
-            [self addLabelToView:cell withText:@"工程量清单计价文件编制或审核" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"工程量清单计价文件编制或审核" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
            
         }else if (indexPath.row == 5){
-            [self addLabelToView:cell withText:@"工程结算编制" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"工程结算编制" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
            
         }else if (indexPath.row == 6){
-            [self addLabelToView:cell withText:@"竣工决算编审" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"竣工决算编审" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
           
         }else if (indexPath.row == 7){
-            [self addLabelToView:cell withText:@"基本费" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"基本费" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
            
         }else if (indexPath.row == 8){
-            [self addLabelToView:cell withText:@"施工阶段全过程造价控制" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"施工阶段全过程造价控制" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
             
         }else if (indexPath.row == 9){
-            [self addLabelToView:cell withText:@"工程造价争议鉴证" withRect:CGRectMake(0, 0, LEFT_HEAD_WIDTH, CELL_HIGHT)];
+            [self addLabelToView:cell withText:@"工程造价争议鉴证" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, LEFT_HEAD_WIDTH, CELL_HIGHT)];
            
         }
     }else{
         if(indexPath.row == 0){
             
-            [self addTransFormLabelToView:cell withText:@"x≤200" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"x≤200" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 1){
-            [self addTransFormLabelToView:cell withText:@"200<x≤500" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"200<x≤500" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if(indexPath.row == 2){
-            [self addTransFormLabelToView:cell withText:@"500<x≤2000" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"500<x≤2000" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 3){
-            [self addTransFormLabelToView:cell withText:@"2000<x≤5000" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"2000<x≤5000" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 4){
-            [self addTransFormLabelToView:cell withText:@"5000<x≤10000" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"5000<x≤10000" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 5){
-            [self addTransFormLabelToView:cell withText:@"10000 <x≤ 50000" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"10000 <x≤ 50000" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 6){
-            [self addTransFormLabelToView:cell withText:@"x>50000" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"x>50000" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 7){
-            [self addTransFormLabelToView:cell withText:@"小计" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"小计" withRect:CGRectMake(TOP_LEFT_POINT.x, TOP_LEFT_POINT.y, CELL_WIDTH, CELL_HIGHT)];
         }
 
     }
