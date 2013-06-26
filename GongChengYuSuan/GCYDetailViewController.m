@@ -91,7 +91,7 @@
     self.scrollView.bounces = NO;
     [self addLabelToView:self.view withText:@"咨询项目名称" withRect:CGRectMake(0,0,LEFT_HEAD_WIDTH,CELL_HIGHT)];
     for (int index = 0; index<10; index++) {
-        [self addResultToView:self.scrollView indexPath:index];
+        [self addResultToView:self.scrollView ofRow:index];
     }
 
 
@@ -138,7 +138,7 @@
 }
 
 
-- (void)addResultToView:(UIView *)view indexPath:(int)row {
+- (void)addResultToView:(UIView *)view ofRow:(int)row {
     float sum = 0;
     float temp = 0;
     int index = 0;
