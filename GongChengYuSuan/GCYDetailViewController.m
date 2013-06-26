@@ -141,13 +141,16 @@
 - (void)addResultToView:(UIView *)view indexPath:(int)row {
     float sum = 0;
     float temp = 0;
-    for(int i = 0 ;i<7;i++){
-        temp = [[[self.resultArrray objectAtIndex:row] objectAtIndex:i] floatValue];
-        UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(i*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
+    int index = 0;
+    while (index < TOP_HEAD_ARRAY.count ) {
+        temp = [[[self.resultArrray objectAtIndex:row] objectAtIndex:index] floatValue];
+        UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",temp] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
         [view addSubview:label];
         sum +=temp;
+        index++;
     }
-    UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(7*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
+   
+    UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
     [view addSubview:label];
 }
 
