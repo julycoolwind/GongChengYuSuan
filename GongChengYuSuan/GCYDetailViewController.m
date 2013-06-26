@@ -246,7 +246,7 @@
     }
 }
 - (void)viewDidUnload {
-    [self setTableView:nil];
+    //故意不释放leftTable 和topTable看看如何检查内存泄露
     [self setScrollView:nil];
     [super viewDidUnload];
 }

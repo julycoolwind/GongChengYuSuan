@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GCYDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong,nonatomic) UITableView *leftTable;
 @property (strong,nonatomic) UITableView *topTable;
