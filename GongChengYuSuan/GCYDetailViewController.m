@@ -24,7 +24,6 @@
 
 @implementation GCYDetailViewController
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withResutArray:(NSArray *)resultArray{
-    NSLog(@"init");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
         CELL_HIGHT = 60;
@@ -59,7 +58,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSLog(@"viewdidload");
     //检测屏幕方向变化的通知
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -97,11 +95,6 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    NSLog(@"viewwillappear");
-
-}
 -(void) handlerMethod:(NSNotification *)note {
     /* Deal with rotation of your UI here */
     UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
@@ -109,7 +102,6 @@
         //横向
                
     } else if (UIDeviceOrientationIsPortrait(deviceOrientation) ) {
-        NSLog(@"xiejie yemian shoudao tongzhi");
         //纵向
         GCYSAppDelegate *delegate = (GCYSAppDelegate *)[[UIApplication sharedApplication] delegate];
         [delegate.navController popToRootViewControllerAnimated:YES];
@@ -144,18 +136,18 @@
     int index = 0;
     while (index < TOP_HEAD_ARRAY.count ) {
         temp = [[[self.resultArrray objectAtIndex:row] objectAtIndex:index] floatValue];
-        UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",temp] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
+        UILabel *label = [self makeBorderLabel:[NSString stringWithFormat:@"%.3f",temp] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
         [view addSubview:label];
         sum +=temp;
         index++;
     }
    
-    UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
+    UILabel *label = [self makeBorderLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
     [view addSubview:label];
 }
 
-
--(UILabel *)makeLabel:(NSString *)text withRect:(CGRect)rect{
+//制作代边框的label
+-(UILabel *)makeBorderLabel:(NSString *)text withRect:(CGRect)rect{
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     [label setNumberOfLines:0];
     label.text = text;
@@ -165,9 +157,10 @@
     return label;
 
 }
+
+//制作灰色的label
 -(UILabel *)makeGordeGrayLabel:(NSString *)text withRect:(CGRect)rect{
-    
-    UILabel *label = [self makeLabel:text withRect:rect];
+    UILabel *label = [self makeBorderLabel:text withRect:rect];
     label.backgroundColor = [UIColor grayColor];
     return label;
 
