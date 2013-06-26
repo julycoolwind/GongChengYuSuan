@@ -142,36 +142,30 @@
     float sum = 0;
     float temp = 0;
     for(int i = 0 ;i<7;i++){
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
-        [label setNumberOfLines:0];
         temp = [[[self.resultArrray objectAtIndex:row] objectAtIndex:i] floatValue];
-        label.text = [NSString stringWithFormat:@"%.3f",temp];
-        label.textAlignment = NSTextAlignmentCenter;
-        [[label layer] setBorderColor:[[UIColor blackColor] CGColor]];
-        [[label layer] setBorderWidth:1.0];
+        UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(i*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
         [view addSubview:label];
         sum +=temp;
     }
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(7*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
-    [label setNumberOfLines:0];
-    label.text = [NSString stringWithFormat:@"%.3f",sum];
-    label.textAlignment = NSTextAlignmentCenter;
-    [[label layer] setBorderColor:[[UIColor blackColor] CGColor]];
-    [[label layer] setBorderWidth:1.0];
+    UILabel *label = [self makeLabel:[NSString stringWithFormat:@"%.3f",sum] withRect:CGRectMake(7*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
     [view addSubview:label];
 }
 
 
-
--(UILabel *)makeGordeGrayLabel:(NSString *)text withRect:(CGRect)rect{
-    
+-(UILabel *)makeLabel:(NSString *)text withRect:(CGRect)rect{
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     [label setNumberOfLines:0];
     label.text = text;
-    label.backgroundColor = [UIColor grayColor];
     label.textAlignment = NSTextAlignmentCenter;
     [[label layer] setBorderColor:[[UIColor blackColor] CGColor]];
     [[label layer] setBorderWidth:1.0];
+    return label;
+
+}
+-(UILabel *)makeGordeGrayLabel:(NSString *)text withRect:(CGRect)rect{
+    
+    UILabel *label = [self makeLabel:text withRect:rect];
+    label.backgroundColor = [UIColor grayColor];
     return label;
 
 }
