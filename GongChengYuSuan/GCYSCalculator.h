@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GCYSCalculator : NSObject{
-    NSArray *calculatorStrateges;
-}
+@interface GCYSCalculator : NSObject
 @property (strong,nonatomic) NSMutableArray *Cells;
 -(void)initialize;
--(float)calculat:(float)base indexCodeIs:(int)index;
+-(float)calculat:(float)base indexCodeIs:(int)index insertResultIn:(NSArray *) resultArray;
 @end

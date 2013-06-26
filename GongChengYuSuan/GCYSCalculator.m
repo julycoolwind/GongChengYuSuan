@@ -9,33 +9,19 @@
 #import "GCYSCalculator.h"
 #import "GCYSCalculatorCell.h"
 @implementation GCYSCalculator
--(GCYSCalculatorCell *)createCellWith:(GCYSCalculatorCell *)nextCell low:(int)low hight:(int)hight fact:(float)fact{
+-(GCYSCalculatorCell *)createCellWith:(GCYSCalculatorCell *)nextCell low:(int)low hight:(int)hight strategeIndex:(int)strategeIndex factorIndex:(int)factorIndex{
     GCYSCalculatorCell *result = [[GCYSCalculatorCell alloc] init];
-    [result initWithNextCell:nextCell low:low hight:hight fact:fact];
+    [result initWithNextCell:nextCell low:low hight:hight strategeIndex:strategeIndex factorIndex:factorIndex];
     return result;
 }
 
 -(id)init{
     self = [super init];
-    calculatorStrateges = [[NSArray alloc] initWithArray:
-                           [NSArray arrayWithObjects:
-                                [NSArray arrayWithObjects:@0.001,@0.0009,@0.0008,@0.0006,@0.0004,@0.0002,@0.0001, nil],
-                                [NSArray arrayWithObjects:@0.002,@0.0018,@0.0016,@0.0015,@0.001,@0.0008,@0.0005, nil],
-                                [NSArray arrayWithObjects:@0.0035,@0.0032,@0.003,@0.0022,@0.002,@0.0018,@0.0015, nil],
-                                [NSArray arrayWithObjects:@0.0035,@0.0033,@0.003,@0.0025,@0.002,@0.0015,@0.001, nil],
-                                [NSArray arrayWithObjects:@0.002,@0.0018,@0.0016,@0.0015,@0.0014,@0.0012,@0.001, nil],
-                                [NSArray arrayWithObjects:@0.004,@0.0035,@0.003,@0.0028,@0.0025,@0.0023,@0.0018, nil],
-                                [NSArray arrayWithObjects:@0.002,@0.0015,@0.0012,@0.0011,@0.001,@0.0008,@0.0006, nil],
-                                [NSArray arrayWithObjects:@0.004,@0.0035,@0.003,@0.0025,@0.002,@0.0015,@0.001, nil],
-                                [NSArray arrayWithObjects:@0.012,@0.01,@0.008,@0.007,@0.006,@0.005,@0.0035, nil],
-                                [NSArray arrayWithObjects:@0.01,@0.009,@0.008,@0.007,@0.006,@0.005,@0.004, nil],
-                            nil]];
+    
     return self;
 }
 
--(float)floatFactorOfStratege:(int)strategeIndex at:(int)index{
-    return [[[calculatorStrateges objectAtIndex:strategeIndex] objectAtIndex:index] floatValue];
-}
+
 
 
 -(void)initialize{
@@ -49,19 +35,19 @@
     GCYSCalculatorCell *cell2 = nil;
     GCYSCalculatorCell *cell1 = nil;
     for (int index = 0; index<10; index++) {
-        cell7 = [self createCellWith:nil low:50000 hight:0 fact:[self floatFactorOfStratege:index at:6]];
-        cell6 = [self createCellWith:cell7 low:10000 hight:50000 fact:[self floatFactorOfStratege:index at:5]];
-        cell5 = [self createCellWith:cell6 low:5000 hight:10000 fact:[self floatFactorOfStratege:index at:4]];
-        cell4 = [self createCellWith:cell5 low:2000 hight:5000 fact:[self floatFactorOfStratege:index at:3]];
-        cell3 = [self createCellWith:cell4 low:500 hight:2000 fact:[self floatFactorOfStratege:index at:2]];
-        cell2 = [self createCellWith:cell3 low:200 hight:500 fact:[self floatFactorOfStratege:index at:1]];
-        cell1 = [self createCellWith:cell2 low:0 hight:200 fact:[self floatFactorOfStratege:index at:0]];
+        cell7 = [self createCellWith:nil low:50000 hight:0 strategeIndex:index factorIndex:6];
+        cell6 = [self createCellWith:cell7 low:10000 hight:50000 strategeIndex:index factorIndex:5];
+        cell5 = [self createCellWith:cell6 low:5000 hight:10000 strategeIndex:index factorIndex:4];
+        cell4 = [self createCellWith:cell5 low:2000 hight:5000 strategeIndex:index factorIndex:3];
+        cell3 = [self createCellWith:cell4 low:500 hight:2000 strategeIndex:index factorIndex:2];
+        cell2 = [self createCellWith:cell3 low:200 hight:500 strategeIndex:index factorIndex:1];
+        cell1 = [self createCellWith:cell2 low:0 hight:200 strategeIndex:index factorIndex:0];
         [self.Cells insertObject:cell1 atIndex:index];
     }
     
 }
--(float)calculat:(float)base indexCodeIs:(int)index{
-    return [[self.Cells objectAtIndex:index] calculat:base preResult:0];
+-(float)calculat:(float)base indexCodeIs:(int)index insertResultIn:(NSArray *) resultArray{
+    return [[self.Cells objectAtIndex:index] calculat:base preResult:0 insertResultIn:resultArray];
     
 }
 @end

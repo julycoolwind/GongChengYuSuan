@@ -7,7 +7,8 @@
 //
 
 #import "GCYSViewController.h"
-
+#import "GCYDetailViewController.h"
+#import "GCYSAppDelegate.h"
 @interface GCYSViewController ()
 
 @end
@@ -30,8 +31,7 @@
     [self.jine addTarget:self action:@selector(jineChanged:) forControlEvents:UIControlEventEditingChanged];
     
     self.sum = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, 25.0f)];
-
-    //FIXME:持续出没jine时不应当出现菜单
+        //FIXME:持续出没jine时不应当出现菜单
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc]
@@ -39,7 +39,44 @@
                                  action:@selector(handleTaps:)];
     [self.tableView addGestureRecognizer:self.tapGestureRecognizer];
     
+    [self initResultArray];
+    self.title = @"预算费用速算器";
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)initResultArray{
+    resultArray = [[NSArray alloc] initWithArray:
+                   [NSArray arrayWithObjects:
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    [NSMutableArray arrayWithObjects:@0.00,@0.00,@0.00,@0.00,@0.00,@0.00,@0.00, nil],
+                    nil]];
+
+}
+
+-(void) handlerMethod:(NSNotification *)note {
+    /* Deal with rotation of your UI here */
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(deviceOrientation) ) {
+        NSLog(@"MIAN 转为纵横向 开始");
+        //横向
+        GCYSAppDelegate *delegate = (GCYSAppDelegate *)[[UIApplication sharedApplication] delegate];
+        GCYDetailViewController *detailView = [[GCYDetailViewController alloc] initWithNibName:@"GCYDetailViewController" bundle:nil withResutArray:resultArray];
+        [delegate.navController pushViewController:detailView animated:YES];
+        
+    } else if (UIDeviceOrientationIsPortrait(deviceOrientation) ) {
+        //纵向
+        NSLog(@"zongxiang");
+        
+    }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -49,6 +86,14 @@
     
     [center addObserver:self selector:@selector(handleKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [center addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    //检测屏幕方向变化的通知
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(handlerMethod:)
+                               name:@"UIDeviceOrientationDidChangeNotification"
+                             object:nil];
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -67,6 +112,12 @@
     [self setTableView:nil];
     [super viewDidUnload];
 }
+//加入这个方法，横屏的时候才会有变化
+- (BOOL)shouldAutorotateToInterfaceOrientation:
+(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for all supported orientations
+    return YES;
+}
 
 #pragma mark -控件事件
 -(void)jineChanged:(UITextField *)paramSender{
@@ -83,7 +134,7 @@
 
 - (float)doCalculator {
     //这个注释用于测试git
-    //UITableViewCell *ownerCell = (UITableViewCell *)paramSender.superview;
+    //UITableViewCell * ownerCell = (UITableViewCell *)paramSender.superview;
     //TODO:遍历section2中的cell根据switch的状态计算结果。
     NSInteger counter = 0;
     float sum = 0;
@@ -91,7 +142,7 @@
         NSIndexPath *theCurrentCellPaht = [NSIndexPath indexPathForRow:counter inSection:1];
         UITableViewCell *currentCell = [self.tableView cellForRowAtIndexPath:theCurrentCellPaht];
         if([(UISwitch *)currentCell.accessoryView isOn]){
-            sum += [self.calculator calculat:[self inputJine] indexCodeIs:counter];
+            sum += [self.calculator calculat:[self inputJine] indexCodeIs:counter insertResultIn:resultArray];
         }
     }
     return sum;
@@ -102,6 +153,7 @@
 }
 
 -(void)switchIsChanged:(UISwitch *)paramSender{
+    [self initResultArray];
     [self doRefrashSum];
 }
 
@@ -171,7 +223,6 @@
 }
 
 - (void) handleTaps:(UITapGestureRecognizer*)paramSender{
-    NSLog(@"handleTaps execute");
     [self.jine resignFirstResponder];
 }
 

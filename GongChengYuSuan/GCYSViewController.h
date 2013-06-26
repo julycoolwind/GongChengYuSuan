@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GCYSCalculator.h"
 
-@interface GCYSViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface GCYSViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
+    NSArray *resultArray;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITextField *jine;
 @property (strong, nonatomic) IBOutlet UILabel *sum;

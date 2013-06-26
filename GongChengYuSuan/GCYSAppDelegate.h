@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) GCYSViewController *viewController;
 
+@property (strong, nonatomic) UINavigationController *navController;
+
 @end

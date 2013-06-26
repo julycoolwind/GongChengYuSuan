@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GCYSCalculatorCell : NSObject
--(float)calculat:(float)base preResult:(float)preresult;
--(void)initWithNextCell:(GCYSCalculatorCell *)nextcell low:(int)low hight:(int)hight fact:(float)fact;
+@interface GCYSCalculatorCell : NSObject{
+    NSArray *calculatorStrateges;
+}
+-(float)calculat:(float)base preResult:(float)preresult insertResultIn:(NSArray *) resultArray;
+-(void)initWithNextCell:(GCYSCalculatorCell *)nextcell low:(int)low hight:(int)hight strategeIndex:(int)strategeIndex factorIndex:(int)fzctorIndex;
 @end
