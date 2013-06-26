@@ -175,6 +175,8 @@
     UILabel *label = [self makeGordeGrayLabel:text withRect:rect];
     CGRect trmp =  rect;
     label.transform = CGAffineTransformMakeRotation(M_PI/2);
+    trmp.size.width = rect.size.height;
+    trmp.size.height = rect.size.width;
     label.frame  = trmp;
     [view addSubview:label];
 }
@@ -230,7 +232,7 @@
         }else if (indexPath.row == 6){
             [self addTransFormLabelToView:cell withText:@"x>50000" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
         }else if (indexPath.row == 7){
-            [self addTransFormLabelToView:cell withText:@"小计" withRect:CGRectMake(0, 0, CELL_WIDTH+10, CELL_HIGHT)];
+            [self addTransFormLabelToView:cell withText:@"小计" withRect:CGRectMake(0, 0, CELL_WIDTH, CELL_HIGHT)];
         }
 
     }
