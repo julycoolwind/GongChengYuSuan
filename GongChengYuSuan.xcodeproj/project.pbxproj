@@ -31,6 +31,8 @@
 		18D8423517460F7F00A3A653 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186F8588174320BC0062EFC4 /* Foundation.framework */; };
 		18D8423B17460F7F00A3A653 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D8423917460F7F00A3A653 /* InfoPlist.strings */; };
 		18D8423E17460F7F00A3A653 /* tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D8423D17460F7F00A3A653 /* tests.m */; };
+		18F12B9A1768B45300C9B27D /* GCYDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F12B981768B45300C9B27D /* GCYDetailViewController.m */; };
+		18F12B9B1768B45300C9B27D /* GCYDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F12B991768B45300C9B27D /* GCYDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,9 @@
 		18D8423C17460F7F00A3A653 /* tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
 		18D8423D17460F7F00A3A653 /* tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tests.m; sourceTree = "<group>"; };
 		18D8423F17460F7F00A3A653 /* tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tests-Prefix.pch"; sourceTree = "<group>"; };
+		18F12B971768B45300C9B27D /* GCYDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCYDetailViewController.h; sourceTree = "<group>"; };
+		18F12B981768B45300C9B27D /* GCYDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCYDetailViewController.m; sourceTree = "<group>"; };
+		18F12B991768B45300C9B27D /* GCYDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GCYDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +147,9 @@
 				186F8596174320BC0062EFC4 /* GCYSAppDelegate.m */,
 				186F859E174320BC0062EFC4 /* GCYSViewController.h */,
 				186F859F174320BC0062EFC4 /* GCYSViewController.m */,
+				18F12B971768B45300C9B27D /* GCYDetailViewController.h */,
+				18F12B981768B45300C9B27D /* GCYDetailViewController.m */,
+				18F12B991768B45300C9B27D /* GCYDetailViewController.xib */,
 				186F85A1174320BC0062EFC4 /* GCYSViewController.xib */,
 				186F858D174320BC0062EFC4 /* Supporting Files */,
 				18186A6B174378C700AC8490 /* GCYSCalculatorCell.h */,
@@ -274,6 +282,7 @@
 				184175951754659600A84C2E /* AppIcon@2x.png in Resources */,
 				184175961754659600A84C2E /* Settings.png in Resources */,
 				184175971754659600A84C2E /* Settings@2x.png in Resources */,
+				18F12B9B1768B45300C9B27D /* GCYDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +335,7 @@
 				186F85A0174320BC0062EFC4 /* GCYSViewController.m in Sources */,
 				18186A6D174378C700AC8490 /* GCYSCalculatorCell.m in Sources */,
 				18186A701743798700AC8490 /* GCYSCalculator.m in Sources */,
+				18F12B9A1768B45300C9B27D /* GCYDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
