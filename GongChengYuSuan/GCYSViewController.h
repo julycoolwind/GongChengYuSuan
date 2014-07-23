@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 #import "GCYSCalculator.h"
 
-@interface GCYSViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
+@interface GCYSViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,MFMailComposeViewControllerDelegate>{
     NSArray *resultArray;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

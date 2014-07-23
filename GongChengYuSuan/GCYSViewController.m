@@ -42,7 +42,42 @@
     [self initResultArray];
     self.title = @"预算费用速算器";
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提意见" style:UIBarButtonItemStyleDone target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提意见" style:UIBarButtonItemStyleDone target:self action:@selector(sendMail)];
+}
+
+-(void)sendMail{
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+    if (!mailClass) {
+        [self alertWithMessage:@"当前系统版本不支持应用内发送邮件功能，您可以使用别的方式将您的饿意见发到julycoolwind@hotmail.com这个地址。"];
+        return;
+    }
+    if (![mailClass canSendMail]) {
+        [self alertWithMessage:@"未设置邮件账户,您可以设置邮件账户之后再发送。或者通过别的方式将您的饿意见发到julycoolwind@hotmail.com这个地址。"];
+        return;
+    }
+    [self displayMailPicker];
+}
+
+-(void)alertWithMessage:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+//调出邮件发送窗口
+- (void)displayMailPicker
+{
+    MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
+    mailPicker.mailComposeDelegate = self;
+    
+    //设置主题
+    [mailPicker setSubject: @"对工程预算手机软件的建议"];
+    //添加收件人
+    NSArray *toRecipients = [NSArray arrayWithObject: @"julycoolwind@hotmail.com"];
+    [mailPicker setToRecipients: toRecipients];
+    
+    NSString *emailBody = @"<font color='red'>eMail</font> 正文";
+    [mailPicker setMessageBody:emailBody isHTML:YES];
+    [self presentModalViewController: mailPicker animated:YES];
 }
 
 -(void)initResultArray{
@@ -305,7 +340,31 @@
     return result;
 }
 
-
+#pragma mark - 实现 MFMailComposeViewControllerDelegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    //关闭邮件发送窗口
+    [self dismissModalViewControllerAnimated:YES];
+    NSString *msg;
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            msg = @"用户取消编辑邮件";
+            break;
+        case MFMailComposeResultSaved:
+            msg = @"用户成功保存邮件";
+            break;
+        case MFMailComposeResultSent:
+            msg = @"感谢您的反馈。";
+            [self alertWithMessage:msg];
+            break;
+        case MFMailComposeResultFailed:
+            msg = @"用户试图保存或者发送邮件失败";
+            break;
+        default:
+            msg = @"";
+            break;
+    }
+}
 
 
 @end
