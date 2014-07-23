@@ -42,6 +42,7 @@
     [self initResultArray];
     self.title = @"预算费用速算器";
 	// Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提意见" style:UIBarButtonItemStyleDone target:self action:nil];
 }
 
 -(void)initResultArray{
