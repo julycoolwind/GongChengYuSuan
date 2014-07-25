@@ -134,7 +134,7 @@
     float sum = 0;
     float temp = 0;
     int index = 0;
-    while (index < TOP_HEAD_ARRAY.count ) {
+    while (index < TOP_HEAD_ARRAY.count-1 ) {
         temp = [[[self.resultArrray objectAtIndex:row] objectAtIndex:index] floatValue];
         UILabel *label = [self makeBorderLabel:[NSString stringWithFormat:@"%.3f",temp] withRect:CGRectMake(index*CELL_WIDTH, row*CELL_HIGHT, CELL_WIDTH, CELL_HIGHT)];
         [view addSubview:label];
