@@ -27,6 +27,7 @@
 		186F859B174320BC0062EFC4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 186F859A174320BC0062EFC4 /* Default@2x.png */; };
 		186F85A0174320BC0062EFC4 /* GCYSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186F859F174320BC0062EFC4 /* GCYSViewController.m */; };
 		186F85A3174320BC0062EFC4 /* GCYSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186F85A1174320BC0062EFC4 /* GCYSViewController.xib */; };
+		18AD85F5199DEF6D00FF1D1D /* AppIcon@2x.fw.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AD85F4199DEF6D00FF1D1D /* AppIcon@2x.fw.png */; };
 		18D8423317460F7F00A3A653 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D8423217460F7F00A3A653 /* SenTestingKit.framework */; };
 		18D8423417460F7F00A3A653 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186F8586174320BC0062EFC4 /* UIKit.framework */; };
 		18D8423517460F7F00A3A653 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186F8588174320BC0062EFC4 /* Foundation.framework */; };
@@ -74,6 +75,8 @@
 		186F859E174320BC0062EFC4 /* GCYSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCYSViewController.h; sourceTree = "<group>"; };
 		186F859F174320BC0062EFC4 /* GCYSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCYSViewController.m; sourceTree = "<group>"; };
 		186F85A2174320BC0062EFC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GCYSViewController.xib; sourceTree = "<group>"; };
+		18AD85F4199DEF6D00FF1D1D /* AppIcon@2x.fw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.fw.png"; sourceTree = "<group>"; };
+		18AD85F6199DF02200FF1D1D /* AppIcon@2x.fw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.fw.png"; sourceTree = "<group>"; };
 		18D8423117460F7F00A3A653 /* tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D8423217460F7F00A3A653 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		18D8423817460F7F00A3A653 /* tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tests-Info.plist"; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 		186F857A174320BC0062EFC4 = {
 			isa = PBXGroup;
 			children = (
+				18AD85F6199DF02200FF1D1D /* AppIcon@2x.fw.png */,
 				1841758E175451DA00A84C2E /* AppIcon@2x.png */,
 				1841758C175451D400A84C2E /* AppIcon.png */,
 				186F858C174320BC0062EFC4 /* GongChengYuSuan */,
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				184175901754659600A84C2E /* AppIcon.png */,
+				18AD85F4199DEF6D00FF1D1D /* AppIcon@2x.fw.png */,
 				184175911754659600A84C2E /* AppIcon@2x.png */,
 				184175921754659600A84C2E /* Settings.png */,
 				184175931754659600A84C2E /* Settings@2x.png */,
@@ -292,6 +297,7 @@
 				184175961754659600A84C2E /* Settings.png in Resources */,
 				184175971754659600A84C2E /* Settings@2x.png in Resources */,
 				18F12B9B1768B45300C9B27D /* GCYDetailViewController.xib in Resources */,
+				18AD85F5199DEF6D00FF1D1D /* AppIcon@2x.fw.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

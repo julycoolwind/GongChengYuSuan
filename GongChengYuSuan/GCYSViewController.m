@@ -40,10 +40,11 @@
     [self.tableView addGestureRecognizer:self.tapGestureRecognizer];
     
     [self initResultArray];
-    self.title = @"预算费用速算器";
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提意见" style:UIBarButtonItemStyleDone target:self action:@selector(sendMail)];
 }
+
+
 
 -(void)sendMail{
     Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
@@ -75,7 +76,7 @@
     NSArray *toRecipients = [NSArray arrayWithObject: @"julycoolwind@hotmail.com"];
     [mailPicker setToRecipients: toRecipients];
     
-    NSString *emailBody = @"<font color='red'>eMail</font> 正文";
+    NSString *emailBody = @"期待获得您的建议，我会尽快添加您需要的功能。";
     [mailPicker setMessageBody:emailBody isHTML:YES];
     [self presentModalViewController: mailPicker animated:YES];
 }
@@ -111,13 +112,19 @@
         //纵向
         NSLog(@"zongxiang");
         
+        self.title = @"预算费用速算器";
+        // Do any additional setup after loading the view, typically from a nib.
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提意见" style:UIBarButtonItemStyleDone target:self action:@selector(sendMail)];
+        
     }
     
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    self.title = @"预算费用速算器";
+    GCYSAppDelegate *delegate = (GCYSAppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.navController.navigationBarHidden  = NO;
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
     [center addObserver:self selector:@selector(handleKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -130,6 +137,7 @@
                                name:@"UIDeviceOrientationDidChangeNotification"
                              object:nil];
 
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

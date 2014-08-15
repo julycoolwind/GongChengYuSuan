@@ -104,7 +104,8 @@
     } else if (UIDeviceOrientationIsPortrait(deviceOrientation) ) {
         //纵向
         GCYSAppDelegate *delegate = (GCYSAppDelegate *)[[UIApplication sharedApplication] delegate];
-        [delegate.navController popToRootViewControllerAnimated:YES];
+//        [delegate.navController popToRootViewControllerAnimated:YES];
+        [delegate.navController popViewControllerAnimated:YES];
 
         
     }
